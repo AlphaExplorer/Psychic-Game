@@ -4,26 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>GOT Hangman</title>
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/javascript/game.js"></script>
     </head>
+
 <body>
-  
-    
-    
+
+
+    <!-- Page Logo/Brand -->
     <img src="assets/images/GOT_Logo.png" alt="Page_Logo" width="500rem">
+    
+    <!-- Instructions -->
     <p>Guess the misterious GOT character within the allowable attempts and avoid loosing your head like Ned Stark</p>
     <p>Press any key to get started</p>
-    <p>Wins</p>
+    
+    <!-- Game Total Wins -->
+    <div id="scoreBoard">
+        <div id="numberWins">
+
+        </div>
+    
+    </div>
+
+    <!--  -->
     <p>Current word</p>
-    <p>------------</p>
+    
+    <div id="gessingBoard"></div>
+       
     <p>Number of guesses remaining</p>
     <p>3</p>
     <p>Letters already guessed</p>
     <p>------------</p>
 
-</body>
-</html>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="assets/javascript/game.js"></script>
+    </body>
+    </html>
