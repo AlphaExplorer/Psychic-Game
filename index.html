@@ -4,42 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>GOT Hangman</title>
     <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
-    </head>
+    
+    <title>GOT Hangman</title>    
+</head>
+<!-- https://www.insider.com/game-of-thrones-character-names-photos-2019-3#lets-start-with-some-major-folks-daenerys-targaryen-is-believed-by-all-to-be-the-last-living-member-of-house-targaryen-1 -->
 
 <body>
-
-
-    <!-- Page Logo/Brand -->
-    <img src="assets/images/GOT_Logo.png" alt="Page_Logo" width="500rem">
-    
-    <!-- Instructions -->
-    <p>Guess the misterious GOT character within the allowable attempts and avoid loosing your head like Ned Stark</p>
-    <p>Press any key to get started</p>
-    
-    <!-- Game Total Wins -->
-    <div id="scoreBoard">
-        <div id="numberWins">
-
+    <div class="container_1" >
+        <div class="container_1.1">
+            <img class="center" src="assets/images/GOT_Logo.png" alt="Page_Logo" width="500rem">
         </div>
-    
+        <div class="container_1.2" >
+            <h2 class="center">Hangman Style</h2>
+        </div>
     </div>
 
-    <!--  -->
-    <p>Current word</p>
+    <div class="container_2">
+        <div class="container_2.1 center">
+            <p>"Chaos is a ladder"-Littlefinger. Chaos is the name of this game and your goal is to create as much of it as possible. Betwwen you and the Iron Throne there is list of characters we need to eliminate.  In order to do so, you need to guess within the allowable attempts, the name of your victim.  Be carful, because if you lose, you will end up like Ned.</p>
+        </div>    
+        <div class="container_2.2 center">
+            <p>Press any key to get started</p>
+        </div>
+    </div>
+   
+    <div class="container_3">
+        <div class="container_3.1">
+            <div class="character_image">
+                <img src="assets/images/Daenerys.png" alt="character_image" width="300rem">
+            </div>
+            <div class="scoreBoard">
+                <p>Total Kills</p>
+                <div>
+                    <p>14</p>
+                </div>
+            </div>
+        </div>
+        <div class="container_3.2">
+            <div class="keystroke" >
+                <p id="last_pressed_key"></p>
+            </div>
+            <div class="remaining_guesses">
+                <p>number of guesses remaining</p>
+            </div>
+            <div id="name_board">
+            </div>
+            <div class="">
+                <p id="letters_guessed"></p>
+            </div>           
+        </div>
+    </div>
     
-    <div id="gessingBoard"></div>
-       
-    <p>Number of guesses remaining</p>
-    <p>3</p>
-    <p>Letters already guessed</p>
-    <p>------------</p>
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="assets/javascript/game.js"></script>
-    </body>
-    </html>
+</body>
+</html>
