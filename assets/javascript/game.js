@@ -1,7 +1,7 @@
 // Variable declaration 
 var list_of_characters = ["Jonh Snow", "Daenerys Targaryen", "Khal Drogo","Robert Baratheon","Cersei Lannister", "Jaime Lannister" ];
 var numberWins = 0; 
-var maxNumberGuesses = 12;
+var maxNumberGuesses = 15;
 var guessing_board_synbol = "_";
 var winning_trigger = false;
 
@@ -76,6 +76,18 @@ document.onkeyup = function keyStroke (event){
   if (winning_trigger === true)
   {
     $("#score_board").html(numberWins+=1);
+    alert("Congratulations, you are one step closer to the Iron Throne, keep climbing the chaos ladder")
+    $("div").remove("#dash");
+    selected_character = character_generator(list_of_characters);
+    selected_character_name_letters = selected_character.split('');
+    boardGenerator(selected_character_name_letters);
+    list_unique_pressed_keys = [] 
+    list_all_pressed_keys = []
+  }
+
+  if (attempts_remaining === 0)
+  {
+    alert("You lost");
     $("div").remove("#dash");
     selected_character = character_generator(list_of_characters);
     selected_character_name_letters = selected_character.split('');
