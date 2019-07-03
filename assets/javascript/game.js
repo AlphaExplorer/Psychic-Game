@@ -33,6 +33,11 @@ boardGenerator(selected_character_name_letters);
 // # 4.1-  Create empty arrays
 var list_unique_pressed_keys = [] 
 var list_all_pressed_keys = []
+var attempts_remaining = maxNumberGuesses - list_all_pressed_keys.length;
+$("#score_board").html(numberWins);
+$("#last_pressed_key").html("Your last pressed key was: ");
+$("#letters_guessed").html("You have pressed so far the following letters: " + list_unique_pressed_keys);
+$("#remaining_guesses").html("You have the following number of guesses remaining: " + attempts_remaining);
 
 document.onkeyup = function keyStroke (event){
   
@@ -42,16 +47,16 @@ document.onkeyup = function keyStroke (event){
 
   // #4.3 Store all the pressed keys in list_all_pressed_keys
   list_all_pressed_keys.push(last_pressed_key);
-  // console.log(list_all_pressed_keys);
+  console.log(list_all_pressed_keys);
   
   // #4.4 update the number of attempt left
-  var attempts_remaining = maxNumberGuesses - list_all_pressed_keys.length;
+  attempts_remaining = maxNumberGuesses - list_all_pressed_keys.length;
 
   // #4.5 If the pressed key has not been pressed before store it in list_unique_pressed_keys
   if(list_unique_pressed_keys.indexOf(last_pressed_key) === -1) 
   {
     list_unique_pressed_keys.push(last_pressed_key);
-    // console.log(list_unique_pressed_keys);
+    console.log(list_unique_pressed_keys);
   }
     
   // #4.6 If the last pressed key matches the class of #name_board, replace the blank of the guessing board for the last pressed key 
@@ -75,19 +80,22 @@ document.onkeyup = function keyStroke (event){
 
   if (winning_trigger === true)
   {
+    list_unique_pressed_keys = [] 
+    list_all_pressed_keys = []
     $("#score_board").html(numberWins+=1);
-    alert("Congratulations, you are one step closer to the Iron Throne, keep climbing the chaos ladder")
+    attempts_remaining = maxNumberGuesses;
+    $("#remaining_guesses").html("You have the following number of guesses remaining: " + attempts_remaining);
     $("div").remove("#dash");
+    $("#letters_guessed").html("You have pressed so far the following letters: " + list_unique_pressed_keys);
     selected_character = character_generator(list_of_characters);
     selected_character_name_letters = selected_character.split('');
     boardGenerator(selected_character_name_letters);
-    list_unique_pressed_keys = [] 
-    list_all_pressed_keys = []
   }
 
-  if (attempts_remaining === 0)
+  if (attempts_remaining < 0)
   {
     alert("You lost");
+    maxNumberGuesses = 15
     $("div").remove("#dash");
     selected_character = character_generator(list_of_characters);
     selected_character_name_letters = selected_character.split('');
