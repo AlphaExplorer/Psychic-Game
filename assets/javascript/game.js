@@ -80,6 +80,7 @@ document.onkeyup = function keyStroke (event){
 
   if (winning_trigger === true)
   {
+    alert("Congratulation on your kill.  Keep climbing the ladder");
     list_unique_pressed_keys = [] 
     list_all_pressed_keys = []
     $("#score_board").html(numberWins+=1);
@@ -95,13 +96,16 @@ document.onkeyup = function keyStroke (event){
   if (attempts_remaining < 0)
   {
     alert("You lost");
-    maxNumberGuesses = 15
+    list_unique_pressed_keys = [] 
+    list_all_pressed_keys = []
+    $("#score_board").html("0");
+    attempts_remaining = maxNumberGuesses;
+    $("#remaining_guesses").html("You have the following number of guesses remaining: " + attempts_remaining);
     $("div").remove("#dash");
+    $("#letters_guessed").html("You have pressed so far the following letters: " + list_unique_pressed_keys);
     selected_character = character_generator(list_of_characters);
     selected_character_name_letters = selected_character.split('');
     boardGenerator(selected_character_name_letters);
-    list_unique_pressed_keys = [] 
-    list_all_pressed_keys = []
   }
 
 };//end of event handler code
