@@ -1,14 +1,27 @@
 // Variable declaration 
-var list_of_characters = ["Jonh Snow", "Daenerys Targaryen", "Khal Drogo","Robert Baratheon","Cersei Lannister", "Jaime Lannister" ];
+var list_of_characters = 
+[
+  {name: "Cersei Lannister", image: "assets/images/Cersei_Lannister.jpg"}, 
+  {name: "Daenerys Targaryen", image: "assets/images/Daenerys_Targaryen.png"}, 
+  {name: "Khal Drogo", image:"assets/images/Khal_Drogo.jpg"}, 
+  {name: "Robert Baratheon", image: "assets/images/Robert_Baratheon.jpg"},
+  {name: "Jaime Lannister", image:"assets/images/Jaime_Lannister.jpg"},
+  {name: "Jon Snow", image:"assets/images/Jon_Snow.jpg"},
+  {name: "Joffrey Lannister", image: "assets/images/Joffrey_Lannister.png"},
+  {name:"Sansa Stark", image: "assets/images/Sansa_Stark.jpg"},
+  {name: "Stannis Baratheon", image:"assets/images/Stannis_Baratheon.jpg"},
+  {name:"Tyrion Lannister", image:"assets/images/Tyrion_Lannister.png"}
+];
+
 var numberWins = 0; 
 var maxNumberGuesses = 15;
 var guessing_board_synbol = "_";
 var winning_trigger = false;
 
 // # 1- Select a random character from the array list_of_characters
-var character_generator = function(list)
+function character_generator(list)
 {
-  return list[numberWins].toLowerCase().replace(/ /g, '');
+  return list[numberWins].name.toLowerCase().replace(/ /g, '');
 }
 
 var selected_character = character_generator(list_of_characters);
@@ -77,13 +90,14 @@ document.onkeyup = function keyStroke (event){
     return list_all_pressed_keys.indexOf(val) >= 0; 
   });
   console.log(winning_trigger);
-
+  //winning reset
   if (winning_trigger === true)
   {
     alert("Congratulation on your kill.  Keep climbing the ladder");
     list_unique_pressed_keys = [] 
     list_all_pressed_keys = []
     $("#score_board").html(numberWins+=1);
+    $('#character-image').html('<img src='+list_of_characters[numberWins-1].image+' width="200rem">');
     attempts_remaining = maxNumberGuesses;
     $("#remaining_guesses").html("You have the following number of guesses remaining: " + attempts_remaining);
     $("div").remove("#dash");
@@ -93,12 +107,14 @@ document.onkeyup = function keyStroke (event){
     boardGenerator(selected_character_name_letters);
   }
 
+  //Losing reset
   if (attempts_remaining < 0)
   {
     alert("You lost");
     list_unique_pressed_keys = [] 
     list_all_pressed_keys = []
     $("#score_board").html("0");
+    $('#character-image').html('<img src="assets/images/Iron_Throne.jpg" width="200rem">');
     attempts_remaining = maxNumberGuesses;
     $("#remaining_guesses").html("You have the following number of guesses remaining: " + attempts_remaining);
     $("div").remove("#dash");
